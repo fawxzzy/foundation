@@ -4,7 +4,7 @@
   "title": "Foundation package contract smoke",
   "summary": "Repo-owned Foundation QA intent for build and registry contract verification.",
   "repo_id": "foundation",
-  "repo_path": "repos/fawxzzy-foundation",
+  "repo_path": "repos/foundation",
   "adapter_id": "foundation.package",
   "criticality": "medium",
   "tags": [

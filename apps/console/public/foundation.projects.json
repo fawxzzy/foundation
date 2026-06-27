@@ -9,8 +9,8 @@
     "totalProjects": 8,
     "activeProjects": 7,
     "deploymentMappedProjects": 5,
-    "currentProofProjects": 5,
-    "staleProofProjects": 0,
+    "currentProofProjects": 0,
+    "staleProofProjects": 5,
     "pendingProofProjects": 0,
     "proofWarningProjects": 0,
     "proofWarningStateCounts": {},
@@ -157,7 +157,7 @@
           "promotionProofPinnedAt": "2026-04-30T00:51:18Z",
           "latestObservedDeploymentId": "dpl_5c92EdvaBSLNdJ6dGH8zxTkiYAbU",
           "latestObservedCommitSha": "36ac2970c77160c4e7efdcc881eb3b53f3b3182f",
-          "isStale": false
+          "isStale": true
         }
       },
       "stack": [
@@ -804,7 +804,7 @@
           "qualitySummary": "READY proof from the primary project is current and clean, and the legacy prod-deploy lane is classified as historical inventory only.",
           "latestObservedDeploymentId": "dpl_fDrvLGa6geKmvcxnzE7VM9zepwZZ",
           "latestObservedCommitSha": "6712fbac0c49ee88b36d5b86a4899b9e4110086b",
-          "isStale": false
+          "isStale": true
         }
       },
       "stack": [
@@ -953,7 +953,7 @@
           "qualitySummary": "READY proof is current and the checked deployment metadata appears clean.",
           "latestObservedDeploymentId": "dpl_9yFBd8hRjq1uKoibCZC7bFMBtrMR",
           "latestObservedCommitSha": "f42f472bb057b2e4d57d8ac5c06253e2c3ef5166",
-          "isStale": false
+          "isStale": true
         }
       },
       "stack": [
@@ -1098,7 +1098,7 @@
           "qualitySummary": "READY proof is current and the checked deployment metadata appears clean.",
           "latestObservedDeploymentId": "dpl_6HffwG5aHXXBGF8fDVenMDyZ9xyh",
           "latestObservedCommitSha": "ed51c69643047e1c59bb1caa310900ac6d526d8a",
-          "isStale": false
+          "isStale": true
         }
       },
       "stack": [
@@ -1237,7 +1237,7 @@
           "qualitySummary": "READY proof is current, and private-source provenance is explicitly accepted when Vercel metadata still identifies ZachariahRedfield/nat1-games on main.",
           "latestObservedDeploymentId": "dpl_4rZ9yz4QZch3G9Q22B8eVqPx7gsq",
           "latestObservedCommitSha": "ce9643465d69f76a46d92d0db6ed855d117e1bbd",
-          "isStale": false
+          "isStale": true
         }
       },
       "stack": [

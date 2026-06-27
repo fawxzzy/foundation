@@ -59,7 +59,7 @@ Updated: 2026-05-11T21:39:01.1275399Z
 - Recorded Vercel mappings: `fawxzzy-foundation`
 - Deployment: `ready` - Latest production deployment is READY and reflects the Fitness Wave 2A-4 proof refresh commit. (checked `2026-05-11T21:39:01.1275399Z`)
 - Latest deployment facts: deployment `dpl_5c92EdvaBSLNdJ6dGH8zxTkiYAbU`, target `production`, alias `fawxzzy-foundation.vercel.app`, commit `36ac2970c77160c4e7efdcc881eb3b53f3b3182f`, message "Record Fitness Wave 2A-4 advisor proof"
-- Proof: `current` - Pinned promotion proof remains intact at abda5a5/dpl_8CbDvRtaeq7gxSbCAg94r7vWR8A2 while the latest observed production display parity is 36ac297/dpl_5c92EdvaBSLNdJ6dGH8zxTkiYAbU. (checked `2026-05-11T21:39:01.1275399Z`)
+- Proof: `current / stale` - Pinned promotion proof remains intact at abda5a5/dpl_8CbDvRtaeq7gxSbCAg94r7vWR8A2 while the latest observed production display parity is 36ac297/dpl_5c92EdvaBSLNdJ6dGH8zxTkiYAbU. (checked `2026-05-11T21:39:01.1275399Z`)
 - Proof freshness window: 168h
 - Last deployment proof captured: `2026-05-11T21:39:01.1275399Z`
 - Proof quality: `clean` - Pinned active-control-plane proof remains clean and unchanged.
@@ -144,7 +144,7 @@ Updated: 2026-05-11T21:39:01.1275399Z
 - Recorded Vercel mappings: `fawxzzy-fitness (primary)`, `fawxzzy-fitness-prod-deploy (historical)`
 - Deployment: `ready` - Latest observed production deployment is READY on fawxzzy-fitness-local.vercel.app and the primary project now reports clean commit provenance. (checked `2026-05-11T21:39:01.1275399Z`)
 - Latest deployment facts: deployment `dpl_fDrvLGa6geKmvcxnzE7VM9zepwZZ`, target `production`, alias `fawxzzy-fitness-local.vercel.app`, commit `6712fbac0c49ee88b36d5b86a4899b9e4110086b`, message "fix: add touch fallback for session rail"
-- Proof: `current` - Foundation captured a current clean deployment proof snapshot for Fitness from the primary Vercel project, and the former prod-deploy lane is now recorded as historical rather than an active proof target. (checked `2026-05-11T21:39:01.1275399Z`)
+- Proof: `current / stale` - Foundation captured a current clean deployment proof snapshot for Fitness from the primary Vercel project, and the former prod-deploy lane is now recorded as historical rather than an active proof target. (checked `2026-05-11T21:39:01.1275399Z`)
 - Proof freshness window: 168h
 - Last deployment proof captured: `2026-05-11T21:39:01.1275399Z`
 - Proof quality: `clean` - READY proof from the primary project is current and clean, and the legacy prod-deploy lane is classified as historical inventory only.
@@ -197,7 +197,7 @@ Updated: 2026-05-11T21:39:01.1275399Z
 - Recorded Vercel mappings: `fawxzzy-mazer`
 - Deployment: `ready` - Latest observed production deployment is READY on fawxzzy-mazer.vercel.app. (checked `2026-05-11T21:39:01.1275399Z`)
 - Latest deployment facts: deployment `dpl_9yFBd8hRjq1uKoibCZC7bFMBtrMR`, target `production`, alias `fawxzzy-mazer.vercel.app`, commit `f42f472bb057b2e4d57d8ac5c06253e2c3ef5166`, message "updated"
-- Proof: `current` - Foundation captured a current deployment proof snapshot for Mazer from the live production alias. (checked `2026-05-11T21:39:01.1275399Z`)
+- Proof: `current / stale` - Foundation captured a current deployment proof snapshot for Mazer from the live production alias. (checked `2026-05-11T21:39:01.1275399Z`)
 - Proof freshness window: 168h
 - Last deployment proof captured: `2026-05-11T21:39:01.1275399Z`
 - Proof quality: `clean` - READY proof is current and the checked deployment metadata appears clean.
@@ -226,7 +226,7 @@ Updated: 2026-05-11T21:39:01.1275399Z
 - Recorded Vercel mappings: `fawxzzy-trove`
 - Deployment: `ready` - Latest observed production deployment is READY on fawxzzy-trove.vercel.app and the checked deployment metadata appears clean. (checked `2026-05-11T21:39:01.1275399Z`)
 - Latest deployment facts: deployment `dpl_6HffwG5aHXXBGF8fDVenMDyZ9xyh`, target `production`, alias `fawxzzy-trove.vercel.app`, commit `ed51c69643047e1c59bb1caa310900ac6d526d8a`, message "Add layered Fitness preview board"
-- Proof: `current` - Foundation captured a current clean deployment proof snapshot for Trove from the live production alias. (checked `2026-05-11T21:39:01.1275399Z`)
+- Proof: `current / stale` - Foundation captured a current clean deployment proof snapshot for Trove from the live production alias. (checked `2026-05-11T21:39:01.1275399Z`)
 - Proof freshness window: 168h
 - Last deployment proof captured: `2026-05-11T21:39:01.1275399Z`
 - Proof quality: `clean` - READY proof is current and the checked deployment metadata appears clean.
@@ -255,7 +255,7 @@ Updated: 2026-05-11T21:39:01.1275399Z
 - Recorded Vercel mappings: `nat-1-games`
 - Deployment: `ready` - Latest observed production deployment is READY on nat-1-games.vercel.app. (checked `2026-05-11T21:39:01.1275399Z`)
 - Latest deployment facts: deployment `dpl_4rZ9yz4QZch3G9Q22B8eVqPx7gsq`, target `production`, alias `nat-1-games.vercel.app`, commit `ce9643465d69f76a46d92d0db6ed855d117e1bbd`, message "Merge pull request #227 from ZachariahRedfield/codex/simplify-time-zone-selection-and-auto-select Improve Start Session UI and prevent mobile input zoom"
-- Proof: `current` - Foundation captured a current deployment proof snapshot for Nat 1 Games from Vercel, and the intentionally private GitHub source is accepted through Vercel provenance. (checked `2026-05-11T21:39:01.1275399Z`)
+- Proof: `current / stale` - Foundation captured a current deployment proof snapshot for Nat 1 Games from Vercel, and the intentionally private GitHub source is accepted through Vercel provenance. (checked `2026-05-11T21:39:01.1275399Z`)
 - Proof freshness window: 168h
 - Last deployment proof captured: `2026-05-11T21:39:01.1275399Z`
 - Proof quality: `accepted-private-source` - READY proof is current, and private-source provenance is explicitly accepted when Vercel metadata still identifies ZachariahRedfield/nat1-games on main.
