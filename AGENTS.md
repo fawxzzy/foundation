@@ -37,6 +37,9 @@ pnpm foundation projects --json
 - Keep human docs brief-thin. Put machine-heavy facts in JSON contracts.
 - Do not add external dependencies unless the need is clear and the verification path remains simple.
 - Use `AGENTS.md` as the canonical agent contract name across new repos.
+- Treat every Vercel production deploy, promotion, rollback/promotion, or production-alias cutover as approval-gated.
+- Do not run any production-targeting Vercel mutation for Foundation unless the operator explicitly says so in the current thread with wording such as `deploy to prod`, `deploy to production`, or `promote Foundation on Vercel`.
+- Generic approval such as `continue`, `proceed`, `do it`, or broad batch approval does not count as Vercel production deploy approval.
 
 ## Preferred shape
 
