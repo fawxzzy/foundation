@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "projectId": "foundation",
+  "updatedAt": "2026-07-14",
+  "sourceRefs": [
+    "docs/roadmap/FOUNDATION_ROADMAP.md",
+    "docs/architecture/FOUNDATION_BLUEPRINT.md",
+    "data/projects.json"
+  ],
+  "workItems": [
+    {
+      "id": "FDN-201",
+      "title": "Provider observation snapshots",
+      "status": "complete",
+      "goal": "Represent explicit GitHub, Vercel, and Supabase observations as safe file-based evidence.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "A versioned provider-observations schema defines supported read-only facets.",
+        "Safe example fixtures contain no credentials or environment values.",
+        "Foundation verification validates the provider observation contract."
+      ],
+      "evidence": [
+        "packages/contracts/provider-observations.schema.json",
+        "fixtures/provider-observations.example.json",
+        "docs/operations/PROVIDER_OBSERVATIONS.md"
+      ]
+    },
+    {
+      "id": "FDN-202",
+      "title": "Proposal-only proof refresh drafts",
+      "status": "complete",
+      "goal": "Compare observed provider evidence with registry truth and render reviewable drafts without mutating the registry.",
+      "type": "automation",
+      "priority": null,
+      "dependencies": ["FDN-201"],
+      "acceptanceCriteria": [
+        "Proof refresh emits JSON and Markdown drafts under .foundation.",
+        "Draft generation never mutates data/projects.json.",
+        "Registry-only and external-observation modes are documented and verified."
+      ],
+      "evidence": [
+        "scripts/render-proof-refresh-draft.mjs",
+        "packages/contracts/proof-refresh-draft.schema.json",
+        "docs/operations/PROOF_REFRESH.md"
+      ]
+    },
+    {
+      "id": "FDN-203",
+      "title": "Observation and mutation separation",
+      "status": "complete",
+      "goal": "Keep provider observation, proposal, approval, and registry mutation as separate authority stages.",
+      "type": "governance",
+      "priority": null,
+      "dependencies": ["FDN-202"],
+      "acceptanceCriteria": [
+        "Proposal artifacts declare no mutation authority.",
+        "Approved registry change bundles remain separate from provider observation.",
+        "Foundation documentation preserves explicit operator review before registry edits."
+      ],
+      "evidence": [
+        "packages/contracts/registry-change-bundle.schema.json",
+        "scripts/render-registry-change-bundle.mjs",
+        "docs/operations/REGISTRY_CHANGE_BUNDLES.md"
+      ]
+    },
+    {
+      "id": "FDN-204",
+      "title": "Stale-proof refresh queue",
+      "status": "planned",
+      "goal": "Turn stale-proof classifications into a deterministic, reviewable refresh queue without granting provider or registry mutation authority.",
+      "type": "automation",
+      "priority": null,
+      "dependencies": ["FDN-202", "FDN-203"],
+      "acceptanceCriteria": [
+        "Queue entries use stable project-scoped identities and source evidence references.",
+        "Repeated generation from unchanged inputs produces identical queue ordering and content.",
+        "Queue entries distinguish observation work from any later mutation request.",
+        "Foundation verification covers empty, current-proof, stale-proof, and conflicting-proof inputs."
+      ],
+      "evidence": [
+        "scripts/render-proof-refresh-draft.mjs",
+        "packages/contracts/proof-refresh-draft.schema.json",
+        "docs/operations/PROOF_REFRESH.md"
+      ]
+    },
+    {
+      "id": "FDN-205",
+      "title": "File-based live provider observation inputs",
+      "status": "complete",
+      "goal": "Accept explicit provider observation files before introducing any direct provider read adapter.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": ["FDN-201"],
+      "acceptanceCriteria": [
+        "The CLI accepts an explicit provider observation input path.",
+        "Manual capture normalization produces contract-valid runtime artifacts.",
+        "All generated observation artifacts remain private runtime output."
+      ],
+      "evidence": [
+        "scripts/normalize-provider-observations.mjs",
+        "packages/cli/bin/foundation.mjs",
+        "docs/operations/PROVIDER_CAPTURE.md"
+      ]
+    },
+    {
+      "id": "FDN-301",
+      "title": "Direct provider read adapters",
+      "status": "planned-later",
+      "goal": "Add receipt-backed read-only GitHub, Vercel, and Supabase observation adapters while retaining file input as a supported fallback.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": ["FDN-204", "FDN-205"],
+      "acceptanceCriteria": [
+        "Every adapter is read-only and records provider, scope, observation time, and evidence identity.",
+        "No credential value, cookie, token, or environment value is persisted in Foundation artifacts.",
+        "Unavailable or denied provider surfaces remain explicit rather than inferred.",
+        "File-based observation input remains supported and contract-compatible."
+      ],
+      "evidence": [
+        "docs/operations/PROVIDER_OBSERVATIONS.md",
+        "docs/operations/PROVIDER_CAPTURE.md",
+        "packages/contracts/provider-observations.schema.json"
+      ]
+    },
+    {
+      "id": "FDN-401",
+      "title": "Supabase inventory draft contract",
+      "status": "complete",
+      "goal": "Represent read-only Supabase database and security posture without mutating Supabase.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "The inventory schema covers project, schema, RLS, auth, storage, function, migration, and advisor evidence.",
+        "Draft rendering is input-bound and read-only.",
+        "Fixtures and verification reject unsafe secret-bearing examples."
+      ],
+      "evidence": [
+        "packages/contracts/supabase-inventory-draft.schema.json",
+        "scripts/render-supabase-inventory-draft.mjs",
+        "docs/operations/SUPABASE_INVENTORY.md"
+      ]
+    },
+    {
+      "id": "FDN-402",
+      "title": "Desired, observed, and health state separation",
+      "status": "complete",
+      "goal": "Keep desired project state, observed provider state, and Foundation health judgment as separate machine fields.",
+      "type": "architecture",
+      "priority": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Every required project has split desired, observed, and health state.",
+        "Verification rejects invalid split-state values.",
+        "Generated console data preserves the split state."
+      ],
+      "evidence": [
+        "data/projects.json",
+        "scripts/verify.mjs",
+        "scripts/render-console-data.mjs"
+      ]
+    },
+    {
+      "id": "FDN-403",
+      "title": "Explainable health scorecards",
+      "status": "complete",
+      "goal": "Summarize proof, deployment, and data posture without replacing source evidence.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": ["FDN-402"],
+      "acceptanceCriteria": [
+        "Required projects have scored or explicitly pending scorecards.",
+        "Every score includes explainable dimensions and a next action.",
+        "Accepted private-source policy remains explicit and does not create false warnings."
+      ],
+      "evidence": [
+        "data/projects.json",
+        "scripts/verify.mjs",
+        "apps/console/public/foundation.projects.json"
+      ]
+    },
+    {
+      "id": "FDN-404",
+      "title": "Approved registry change bundles",
+      "status": "complete",
+      "goal": "Convert reviewed proposal artifacts into explicit manual registry-edit instructions without granting automatic mutation authority.",
+      "type": "governance",
+      "priority": null,
+      "dependencies": ["FDN-203"],
+      "acceptanceCriteria": [
+        "Bundles bind source identity, affected projects, operations, evidence, and approval state.",
+        "Proposed bundles retain pending approval and mutationAuthority none.",
+        "Runtime bundle artifacts remain ignored."
+      ],
+      "evidence": [
+        "packages/contracts/registry-change-bundle.schema.json",
+        "scripts/render-registry-change-bundle.mjs",
+        "docs/operations/REGISTRY_CHANGE_BUNDLES.md"
+      ]
+    },
+    {
+      "id": "FDN-501",
+      "title": "Playbook read-interface bridge",
+      "status": "complete",
+      "goal": "Project Playbook verification and governance artifacts without executing or replacing Playbook.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "The read-interface schema preserves per-repository provenance.",
+        "Draft ingestion performs no registry mutation.",
+        "Foundation verification covers the example contract."
+      ],
+      "evidence": [
+        "packages/contracts/playbook-read-interface.schema.json",
+        "scripts/render-playbook-ingestion-draft.mjs",
+        "docs/operations/PLAYBOOK_INGESTION.md"
+      ]
+    },
+    {
+      "id": "FDN-601",
+      "title": "Lifeline execution receipt bridge",
+      "status": "complete",
+      "goal": "Project Lifeline execution and deployment receipts without making Foundation the executor.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Receipt projection preserves target, action, approval, rollback, and health evidence.",
+        "Projection artifacts remain proposal-only runtime state.",
+        "Foundation gains no execution or deployment authority."
+      ],
+      "evidence": [
+        "packages/contracts/lifeline-receipt-projection.schema.json",
+        "scripts/render-lifeline-receipt-projection.mjs",
+        "docs/operations/LIFELINE_RECEIPT_PROJECTION.md"
+      ]
+    },
+    {
+      "id": "FDN-602",
+      "title": "Privacy remediation tracking",
+      "status": "complete",
+      "goal": "Track Fitness privacy remediation while preserving Supabase and owner-repository mutation boundaries.",
+      "type": "governance",
+      "priority": null,
+      "dependencies": ["FDN-401"],
+      "acceptanceCriteria": [
+        "Remediation records preserve severity, status, owner, evidence, and next actions.",
+        "Tracking does not mutate Supabase or Fitness.",
+        "Resolved posture requires explicit remediation evidence."
+      ],
+      "evidence": [
+        "packages/contracts/privacy-remediation-tracker.schema.json",
+        "scripts/render-privacy-remediation-tracker.mjs",
+        "docs/operations/PRIVACY_REMEDIATION_TRACKING.md"
+      ]
+    },
+    {
+      "id": "FDN-701",
+      "title": "Deterministic roadmap next command",
+      "status": "planned",
+      "goal": "Expose the stable machine roadmap through a read-only human and JSON next-work command.",
+      "type": "automation",
+      "priority": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "foundation roadmap next reads only FOUNDATION_ROADMAP.json.",
+        "Completed work is excluded unless explicitly requested.",
+        "Human and JSON output preserve IDs, lifecycle, dependencies, unknown priority, and source revision.",
+        "Repeated reads from unchanged input produce identical ordering."
+      ],
+      "evidence": [
+        "packages/cli/bin/foundation.mjs",
+        "docs/roadmap/FOUNDATION_ROADMAP.json"
+      ]
+    },
+    {
+      "id": "FDN-801",
+      "title": "Cross-app privacy and data contracts",
+      "status": "planned-later",
+      "goal": "Define reusable privacy-first data boundaries for Fitness, wellness, Mazer, Trove, and future applications.",
+      "type": "architecture",
+      "priority": null,
+      "dependencies": ["FDN-401", "FDN-402"],
+      "acceptanceCriteria": [
+        "Versioned contracts cover profile, consent, sensitive data, retention, deletion, ownership, sharing, and audit receipts.",
+        "Product-specific extensions cannot weaken shared privacy semantics.",
+        "Fixtures and verification cover allowed, denied, unknown, and revoked states."
+      ],
+      "evidence": [
+        "docs/roadmap/FOUNDATION_ROADMAP.md",
+        "docs/architecture/FOUNDATION_BLUEPRINT.md"
+      ]
+    },
+    {
+      "id": "FDN-901",
+      "title": "Foundation product operating layer",
+      "status": "planned-later",
+      "goal": "Finish Foundation as the trusted operator dashboard for project health, data posture, deployment proof, and safe next actions.",
+      "type": "feature",
+      "priority": null,
+      "dependencies": ["FDN-204", "FDN-301", "FDN-501", "FDN-601", "FDN-701", "FDN-801"],
+      "acceptanceCriteria": [
+        "Registry, proof, deployment, data, Playbook, and Lifeline projections are current and source-linked.",
+        "The console explains blockers and recommended next actions without claiming owner authority.",
+        "Operator routing preserves approval and production deployment gates.",
+        "A complete local verification and browser proof cover the operator workflow."
+      ],
+      "evidence": [
+        "apps/console/public/index.html",
+        "apps/console/public/foundation.projects.json",
+        "docs/roadmap/FOUNDATION_ROADMAP.md"
+      ]
+    },
+    {
+      "id": "FDN-GOV-001",
+      "title": "Foundation control-plane truth reconciliation",
+      "status": "planned",
+      "goal": "Reconcile the canonical Foundation GitHub identity and current remote evidence across config, registry, generated surfaces, fixtures, setup docs, and Atlas projection.",
+      "type": "migration",
+      "priority": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "The canonical GitHub repository identity is verified from live remote evidence.",
+        "Foundation config, data/projects.json, generated docs, console data, fixtures, and setup guidance agree on that identity.",
+        "Historical promotion evidence remains immutable and clearly dated.",
+        "Foundation build and verify pass, and Atlas root projection is refreshed separately."
+      ],
+      "evidence": [
+        "foundation.config.json",
+        "data/projects.json",
+        "README.md",
+        "docs/operations/GITHUB_SETUP.md"
+      ]
+    }
+  ]
+}

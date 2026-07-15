@@ -6,6 +6,8 @@ Foundation is the active control-plane repo for the Fawxzzy project family. It o
 
 Foundation does not replace ATLAS, Playbook, Lifeline, or product repos. It projects owner-repo truth, preserves evidence, and turns cross-stack state into safe next actions.
 
+Machine-readable roadmap truth lives in `docs/roadmap/FOUNDATION_ROADMAP.json`. The owner export at `exports/foundation.project-board.owner-export.v1.json` deterministically projects only non-complete work from that registry; this narrative explains the phases but does not independently define card state.
+
 ## Phase 0 - Bootstrap and promotion
 
 Status: complete.
@@ -41,13 +43,13 @@ Current capabilities:
 - Proof quality states: `clean`, `accepted-private-source`, `dirty`, `legacy-mapping`, `private-source`, `pending-confirmation`.
 - Source/live parity deployment proof.
 
-Next:
+Reconciled roadmap state:
 
-- Add provider observation snapshots.
-- Generate proof-refresh drafts.
-- Separate observation from mutation.
-- Add stale-proof refresh queue.
-- Accept file-based live provider observation inputs before adding direct provider reads.
+- `FDN-201` Provider observation snapshots: complete.
+- `FDN-202` Proposal-only proof refresh drafts: complete.
+- `FDN-203` Observation/mutation separation: complete.
+- `FDN-204` Stale-proof refresh queue: planned.
+- `FDN-205` File-based provider inputs: complete.
 
 ## Phase 3 - Proof refresh automation
 
@@ -69,6 +71,7 @@ Current build lane:
 - Phase 3A introduced proposal-only draft generation from registry-recorded observations.
 - Phase 3B adds file-based provider observation inputs so external evidence can be compared against registry truth without direct provider API calls from the draft command.
 - Phase 3C adds operator capture templates and a normalizer that turns manually collected provider evidence into the provider-observations contract.
+- `FDN-301` Direct provider read adapters remain planned-later and must preserve the proposal-only mutation boundary.
 
 Non-goals:
 
@@ -217,7 +220,7 @@ Commands:
 - `foundation proof inspect`
 - `foundation proof refresh --draft`
 - `foundation supabase inventory --draft`
-- `foundation roadmap next`
+- `foundation roadmap next` (`FDN-701`, planned)
 
 Rule:
 Voice maps to proposal and inspection commands first, not unrestricted action.
@@ -237,10 +240,14 @@ Contracts:
 - cross-app data sharing rules,
 - audit receipts.
 
+Roadmap state: `FDN-801` Cross-app privacy and data contracts is planned-later.
+
 ## Phase 9 - Foundation as product operating layer
 
 Goal:
 Foundation becomes the trusted operator dashboard for project family health, data posture, deployment proof, and next actions.
+
+Roadmap state: `FDN-901` Foundation operating layer is planned-later.
 
 Done when:
 
@@ -251,3 +258,7 @@ Done when:
 - Playbook/Lifeline receipts are projected,
 - app privacy posture is auditable,
 - future work can be routed from Foundation without losing owner boundaries.
+
+## Governance reconciliation
+
+`FDN-GOV-001` is planned work to reconcile Foundation's control-plane identity, GitHub remote, generated documentation, deployment mappings, and accepted-private-source policy without silently rewriting owner evidence. It is separate from this board-export adapter and requires its own bounded execution packet.

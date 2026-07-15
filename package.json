@@ -8,6 +8,9 @@
     "node": ">=22"
   },
   "scripts": {
+    "board:export": "node scripts/export-project-board-owner.mjs",
+    "board:export:check": "node scripts/export-project-board-owner.mjs --check",
+    "test:board:export": "node --test scripts/test-project-board-owner-export.mjs",
     "foundation": "node packages/cli/bin/foundation.mjs",
     "build": "node scripts/render-registry.mjs && node scripts/render-console-data.mjs",
     "dev": "node scripts/serve-console.mjs",

@@ -118,9 +118,12 @@ const requiredFiles = [
   "scripts/render-registry-change-bundle.mjs",
   "scripts/render-supabase-inventory-draft.mjs",
   "scripts/serve-console.mjs",
+  "scripts/export-project-board-owner.mjs",
+  "scripts/test-project-board-owner-export.mjs",
   "docs/architecture/FOUNDATION_BLUEPRINT.md",
   "docs/architecture/PROJECT_REGISTRY.md",
   "docs/roadmap/FOUNDATION_ROADMAP.md",
+  "docs/roadmap/FOUNDATION_ROADMAP.json",
   "docs/operations/LIFELINE_RECEIPT_PROJECTION.md",
   "docs/operations/PRIVACY_REMEDIATION_TRACKING.md",
   "docs/operations/PLAYBOOK_INGESTION.md",
@@ -140,6 +143,7 @@ const requiredFiles = [
   "apps/console/public/assets/main.js",
   "apps/console/public/assets/styles.css",
   "apps/console/public/foundation.projects.json",
+  "exports/foundation.project-board.owner-export.v1.json",
   ".playbook/ai-contract.json"
 ];
 
@@ -874,6 +878,17 @@ for (const file of requiredFiles) {
   if (!(await exists(file))) {
     errors.push(`Missing required file: ${file}`);
   }
+}
+
+const boardExportCheck = spawnSync(
+  process.execPath,
+  [path.join(root, "scripts/export-project-board-owner.mjs"), "--check"],
+  { cwd: root, encoding: "utf8" }
+);
+if (boardExportCheck.status !== 0) {
+  errors.push(
+    `Foundation project-board owner export is stale or invalid: ${(boardExportCheck.stderr || boardExportCheck.stdout).trim()}`
+  );
 }
 
 const config = await readJson("foundation.config.json");
